@@ -15,9 +15,10 @@ Start:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     lda #0                      ; A = 0
     ldx #$FF                    ; X = #$FF
+    sta $FF                     ; make sure sta $FF is zeroed before loop starts
 MemLoop:
-    sta $0,X                    ; Store the value of A inside MEM address  $0 + X
     dex                         ; X--
+    sta $0,X                    ; Store the value of A inside MEM address  $0 + X
     bne MemLoop                 ; Loop until X is 0 (until Z flag is set)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
